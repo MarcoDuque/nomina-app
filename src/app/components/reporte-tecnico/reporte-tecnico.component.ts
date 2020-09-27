@@ -37,7 +37,7 @@ export class ReporteTecnicoComponent implements OnInit {
     let fechaInicio = moment(this.form.get('fechaInicio').value, "YYYY/MM/DD HH:mm")
     let fechaFin = moment(this.form.get('fechaFin').value, "YYYY/MM/DD HH:mm")
 
-    if (fechaFin > fechaInicio) return true
+    if (fechaFin < fechaInicio) return true;
   }
 
   get idTecnicoNoValido() {

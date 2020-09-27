@@ -22,8 +22,7 @@
     <input type="datetime-local" class="form-control" formControlName="fechaFin" id="fechaFin"
       [class.is-invalid]="fechaFinNoValida">
     <small *ngIf='fechaFinNoValida' class="text-danger"> El campo fecha de finalización es obligatorio </small>
-    <small *ngIf='validacionFechaFin' class="text-danger"> El campo fecha de finalización no puede ser menor a la fecha
-      de inicio </small>
+    <small *ngIf='validacionFechaFin' class="text-danger"> La fecha de inicio debe ser menor que la fecha de fin </small>
   </div>
   <button type="button" class="btn btn-primary form-control" type="submit">Guardar</button>
 </form>
