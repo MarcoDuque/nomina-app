@@ -1,0 +1,29 @@
+<form id="reporteForm" [formGroup]="form" (ngSubmit)="guardar()">
+  <div class="form-group">
+    <label for="idTecnico">Id técnico responsable:</label>
+    <input type="text" class="form-control" formControlName="idTecnico" id="idTecnico" placeholder="Id Técnico"
+      [class.is-invalid]="idTecnicoNoValido">
+    <small *ngIf='idTecnicoNoValido' class="text-danger"> El campo Id técnico es obligatorio </small>
+  </div>
+  <div class="form-group">
+    <label for="idServicio">Id servicio ejecutado:</label>
+    <input type="text" class="form-control" formControlName="idServicio" id="idServicio" placeholder="Id Servicio"
+      [class.is-invalid]="idServicioNoValido">
+    <small *ngIf='idServicioNoValido' class="text-danger"> El campo Id servicio es obligatorio </small>
+  </div>
+  <div class="form-group">
+    <label for="fechaInicio">Hora de inicio:</label>
+    <input type="datetime-local" class="form-control" formControlName="fechaInicio" id="fechaInicio"
+      [class.is-invalid]="fechaInicioNoValida">
+    <small *ngIf='fechaInicioNoValida' class="text-danger"> El campo fecha de inicio es obligatorio </small>
+  </div>
+  <div class="form-group">
+    <label for="fechaFin">Hora de finalización:</label>
+    <input type="datetime-local" class="form-control" formControlName="fechaFin" id="fechaFin"
+      [class.is-invalid]="fechaFinNoValida">
+    <small *ngIf='fechaFinNoValida' class="text-danger"> El campo fecha de finalización es obligatorio </small>
+    <small *ngIf='validacionFechaFin' class="text-danger"> El campo fecha de finalización no puede ser menor a la fecha
+      de inicio </small>
+  </div>
+  <button type="button" class="btn btn-primary form-control" type="submit">Guardar</button>
+</form>
