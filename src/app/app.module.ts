@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { ReporteTecnicoComponent } from './components/reporte-tecnico/reporte-tecnico.component';
 import { ConsultaReporteComponent } from './components/consulta-reporte/consulta-reporte.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { BaseService } from './services/base.service';
+import { ReporteTecnicoService } from './services/reporte-tecnico.service';
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -17,9 +20,13 @@ import { NavbarComponent } from './components/navbar/navbar.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    BaseService,
+    ReporteTecnicoService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

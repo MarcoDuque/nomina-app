@@ -1,6 +1,9 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import * as moment from 'moment';
+import { ReporteTecnico } from 'src/app/models/reporte.interface';
+import { ReporteTecnicoService } from 'src/app/services/reporte-tecnico.service';
 
 @Component({
   selector: 'app-reporte-tecnico',
@@ -11,14 +14,16 @@ export class ReporteTecnicoComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private readonly formBuilder: FormBuilder,
+    private readonly reporteTecnico: ReporteTecnicoService
+  ) { }
+
+  ngOnInit() {
     this.crearFormulario();
   }
 
-  ngOnInit(): void {
-  }
-
-  crearFormulario() {
+  crearFormulario(): void {
     this.form = this.formBuilder.group({
       idTecnico: ['', Validators.required],
       idServicio: ['', Validators.required],
@@ -27,33 +32,37 @@ export class ReporteTecnicoComponent implements OnInit {
     });
   }
 
-  guardar() {
-    console.log(this.form);
-    console.log(this.form.get('fechaInicio').value);
+  guardar(): void {
+    (this.form.valid)
+      ? this.reporteTecnico.guardarReporte(this.form.getRawValue())
+        .subscribe((reporte: ReporteTecnico) => {
+          alert('Registro guardado exitosamente');
+        }, (err: HttpErrorResponse) => {
+          alert('El registro no se pudo guardar');
+        })
+      : this.form.markAllAsTouched();
   }
 
-  get validacionFechaFin() {
-
-    let fechaInicio = moment(this.form.get('fechaInicio').value, "YYYY/MM/DD HH:mm")
-    let fechaFin = moment(this.form.get('fechaFin').value, "YYYY/MM/DD HH:mm")
-
-    if (fechaFin < fechaInicio) return true;
+  get validacionFechaFin(): boolean {
+    const fechaInicio = moment(this.form.get('fechaInicio').value, "YYYY/MM/DD HH:mm");
+    const fechaFin = moment(this.form.get('fechaFin').value, "YYYY/MM/DD HH:mm");
+    return fechaFin < fechaInicio;
   }
 
-  get idTecnicoNoValido() {
-    return this.form.get('idTecnico').invalid && this.form.get('idTecnico').touched
+  get idTecnicoNoValido(): boolean {
+    return this.form.get('idTecnico').invalid && this.form.get('idTecnico').touched;
   }
 
-  get idServicioNoValido() {
-    return this.form.get('idServicio').invalid && this.form.get('idServicio').touched
+  get idServicioNoValido(): boolean {
+    return this.form.get('idServicio').invalid && this.form.get('idServicio').touched;
   }
 
-  get fechaInicioNoValida() {
-    return this.form.get('fechaInicio').invalid && this.form.get('fechaInicio').touched
+  get fechaInicioNoValida(): boolean {
+    return this.form.get('fechaInicio').invalid && this.form.get('fechaInicio').touched;
   }
 
-  get fechaFinNoValida() {
-    return this.form.get('fechaFin').invalid && this.form.get('fechaFin').touched
+  get fechaFinNoValida(): boolean {
+    return this.form.get('fechaFin').invalid && this.form.get('fechaFin').touched;
   }
 
 
