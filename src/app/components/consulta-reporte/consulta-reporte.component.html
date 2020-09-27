@@ -1,1 +1,13 @@
-<p>consulta-reporte works!</p>
+<form class="form-inline" [formGroup]="form" (ngSubmit)="consultar()">
+  <div class="form-group mx-sm-3 mb-2">
+    <input type="text" class="form-control" id="idTecnico" formControlName="idTecnico" placeholder="Id técnico"
+      [class.is-invalid]="idTecnicoNoValido">
+    <small *ngIf='idTecnicoNoValido' class="text-danger"> Id técnico es obligatorio </small>
+  </div>
+  <div class="form-group mx-sm-3 mb-2">
+    <input type="text" class="form-control" id="semana" formControlName="semana" placeholder="Semana del año"
+      [class.is-invalid]="semanaNoValida">
+    <small *ngIf='semanaNoValida' class="text-danger"> La semana de trabajos es obligatoria </small>
+  </div>
+  <button type="submit" class="btn btn-primary mb-2">Consultar</button>
+</form>
