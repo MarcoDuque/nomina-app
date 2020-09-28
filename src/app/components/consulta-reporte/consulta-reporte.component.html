@@ -11,3 +11,28 @@
   </div>
   <button type="submit" class="btn btn-primary mb-2">Consultar</button>
 </form>
+
+<table class="table" *ngIf='Horas != null'>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Horas Normales</th>
+      <th scope="col">Horas Nocturnas</th>
+      <th scope="col">Horas Dominicales</th>
+      <th scope="col">Horas Normales Extras</th>
+      <th scope="col">Horas Nocturnas Extras</th>
+      <th scope="col">Horas Dominicales Extras</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Resumen de Horas</th>
+      <td>{{Horas.horasNormales}}</td>
+      <td>{{Horas.horasNocturnas}}</td>
+      <td>{{Horas.horasDominicales}}</td>
+      <td>{{Horas.horasNormalesExtras}}</td>
+      <td>{{Horas.horasNocturnasExtras}}</td>
+      <td>{{Horas.horasDominicalesExtras}}</td>
+    </tr>
+  </tbody>
+</table>
