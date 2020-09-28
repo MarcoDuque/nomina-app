@@ -36,6 +36,7 @@ export class ReporteTecnicoComponent implements OnInit {
     (this.form.valid)
       ? this.reporteTecnico.guardarReporte(this.form.getRawValue())
         .subscribe((reporte: ReporteTecnico) => {
+          this.form.reset();
           alert('Registro guardado exitosamente');
         }, (err: HttpErrorResponse) => {
           alert('El registro no se pudo guardar');

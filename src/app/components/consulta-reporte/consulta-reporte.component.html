@@ -12,7 +12,7 @@
   <button type="submit" class="btn btn-primary mb-2">Consultar</button>
 </form>
 
-<table class="table" *ngIf='Horas != null'>
+<table class="table" *ngIf="mostrarTabla">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -27,12 +27,12 @@
   <tbody>
     <tr>
       <th scope="row">Resumen de Horas</th>
-      <td>{{Horas.horasNormales}}</td>
-      <td>{{Horas.horasNocturnas}}</td>
-      <td>{{Horas.horasDominicales}}</td>
-      <td>{{Horas.horasNormalesExtras}}</td>
-      <td>{{Horas.horasNocturnasExtras}}</td>
-      <td>{{Horas.horasDominicalesExtras}}</td>
+      <td>{{horas.horasNormales}}</td>
+      <td>{{horas.horasNocturnas}}</td>
+      <td>{{horas.horasDominicales}}</td>
+      <td>{{horas.horasNormalesExtras}}</td>
+      <td>{{horas.horasNocturnasExtras}}</td>
+      <td>{{horas.horasDominicalesExtras}}</td>
     </tr>
   </tbody>
 </table>
