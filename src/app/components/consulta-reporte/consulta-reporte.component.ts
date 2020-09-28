@@ -1,7 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ConsultaReporte } from 'src/app/models/consulta.interface';
 import { ReporteFinal } from 'src/app/models/reporte-final.interface';
 import { ConsultaReporteService } from 'src/app/services/consulta-reporte.service';
 
