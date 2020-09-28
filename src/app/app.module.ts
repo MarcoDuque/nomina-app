@@ -9,6 +9,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { BaseService } from './services/base.service';
 import { ReporteTecnicoService } from './services/reporte-tecnico.service';
 import { HttpClientModule } from '@angular/common/http'
+import { ConsultaReporteService } from './services/consulta-reporte.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { HttpClientModule } from '@angular/common/http'
   ],
   providers: [
     BaseService,
-    ReporteTecnicoService
+    ReporteTecnicoService,
+    ConsultaReporteService
   ],
   bootstrap: [AppComponent]
 })

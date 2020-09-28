@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ConsultaReporte } from 'src/app/models/consulta.interface';
+import { ReporteFinal } from 'src/app/models/reporte-final.interface';
 import { ConsultaReporteService } from 'src/app/services/consulta-reporte.service';
 
 @Component({
@@ -12,7 +13,7 @@ import { ConsultaReporteService } from 'src/app/services/consulta-reporte.servic
 export class ConsultaReporteComponent implements OnInit {
 
   form: FormGroup;
-  Horas: any;
+  horas: ReporteFinal;
 
   constructor(
     private readonly formBuilder: FormBuilder,
@@ -33,13 +34,16 @@ export class ConsultaReporteComponent implements OnInit {
   consultar() {
     (this.form.valid)
       ? this.consultaReporteService.consultarReporte(this.form.getRawValue())
-        .subscribe((consulta: ConsultaReporte) => {
-          console.log(consulta);
-          this.Horas = consulta;
+        .subscribe((reporte: ReporteFinal) => {
+          this.horas = reporte;
         }, (err: HttpErrorResponse) => {
           alert('Se presento un error');
         })
       : this.form.markAllAsTouched();
+  }
+
+  get mostrarTabla(): boolean {
+    return this.horas !== null;
   }
 
   get idTecnicoNoValido(): boolean {
