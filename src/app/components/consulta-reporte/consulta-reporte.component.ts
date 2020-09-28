@@ -18,7 +18,7 @@ export class ConsultaReporteComponent implements OnInit {
   constructor(
     private readonly formBuilder: FormBuilder,
     private readonly consultaReporteService: ConsultaReporteService
-  ) { }
+  ) { console.log(this.horas) }
 
   ngOnInit(): void {
     this.crearFormulario();
@@ -43,7 +43,7 @@ export class ConsultaReporteComponent implements OnInit {
   }
 
   get mostrarTabla(): boolean {
-    return this.horas !== null;
+    return this.horas !== undefined;
   }
 
   get idTecnicoNoValido(): boolean {
